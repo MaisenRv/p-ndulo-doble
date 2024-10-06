@@ -21,8 +21,8 @@ def setup():
     buffer.clear()
     center = Vector(width/4, height/2)
 
-    p1 = Pendulum(0,20,100,radians(360), buffer,center,[255,0,0])
-    p2 = Pendulum(0,20,100,radians(360),buffer, p1.drawPos,[0,0,255], p1)
+    p1 = Pendulum(radians(100),20,100,-np.pi/2, buffer,center,[255,0,0])
+    p2 = Pendulum(radians(-100),20,100,0,buffer, p1.drawPos,[0,0,255], p1)
     plot = Plot(buffer2,wB1)
 
     buffer.stroke(0,0,0,20)
@@ -37,5 +37,11 @@ def draw():
     p1.drawMass()
     p2.drawMass()
     plot.draw([p1,p2])
+    DrawAxes()
     image(buffer,0,0,width,wB1)
     image(buffer2,wB1,150,width,wB1)
+    # print(p1.position.angle)
+    
+def DrawAxes():
+    line([wB1, height/2],[width,height/2])
+    line([wB1, 150],[wB1,350])
